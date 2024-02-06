@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 import { DefaultTheme } from 'tailwindcss/defaultTheme';
 
@@ -9,9 +10,11 @@ module.exports = {
     extend: {
       fontFamily:{
         MainFont: ['Inter var', ...DefaultTheme.fontFamily.sans],
-      }
-    },
+      colors:{
+        backGround:"#2596be"
+      },
+    }
   },
   plugins: [],
 }
-
+}
