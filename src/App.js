@@ -1,9 +1,14 @@
-import './App.css';
+import Routers from './Routes/Routers'
+import './App.css'
 
-function App() {
+
+const App = () => {
   return (
-      <h1>hello</h1>
+    <>
+      <Routers />
+    </>
   );
-}
+};
 
 export default App;
+
