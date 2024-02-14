@@ -14,9 +14,9 @@ const HomePage = () => {
   };
   return (
     <>
-      <div className="bg-backGround  h-screen w-full">
-        <Navbar />
-        <div className="justify-center flex items-center w-full h-[80%] mt-5">
+    <Navbar />
+      <div className="bg-backGround w-full h-screen overflow-auto">
+        <div className="justify-center flex items-center w-full h-[80%]">
           <div className="bg-white h-[100%] w-[90%] rounded-lg flex flex-col items-center justify-center">
             <div className="mt-4 w-[85%] h-[10%] ">
               <h1 className="text-2xl font-semibold  ">Book Now</h1>
@@ -82,10 +82,13 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
-            <div className="hidden:bg-green-500 w-[100%] h-[80%] justify-center">
-              <div className="bg-green-600 w-[25%] h-[55%] m-3 rounded-xl flex flex-row ">
-
-              </div>
+            <div className="w-[80%] h-[80%] justify-between overflow-auto flex flex-wrap border-2 border-backGround rounded-lg">
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
+              <div className="bg-green-600 w-[30%] h-[80%] m-3 rounded-xl flex flex-row "></div>
             </div>
           </div>
         </div>
