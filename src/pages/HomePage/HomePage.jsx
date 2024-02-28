@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
+import logo from '../../assets/images/logo.png'
+import Footer from "../../components/Footer";
 
   
 import { useState } from "react";
@@ -22,8 +24,9 @@ const HomePage = () => {
   
   return (
     <>
+      <div className="bg-backGround">
       <Navbar />
-      <div className="bg-backGround w-full h-screen overflow-auto">
+      <div className=" w-full h-screen overflow-auto">
         <div className="justify-center flex items-center w-full sm:h-[80%] h-[95%] ">
           <div className="bg-white h-[100%] w-[90%] rounded-lg flex flex-col items-center justify-center">
             <div className="mt-4 w-[85%] h-[10%] ">
@@ -86,7 +89,7 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full sm:w-[95%] overflow-auto flex flex-wrap border-2 mb-2 border-backGround rounded-lg justify-center">
+            <div className="w-full sm:w-[95%] overflow-y-scroll no-scrollbar flex flex-wrap  mb-2 border-backGround rounded-lg justify-center mt-3.5">
               
               
               <Card/>
@@ -95,10 +98,7 @@ const HomePage = () => {
               <Card/>
               <Card/>
               <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
+              
               
               
               
@@ -106,7 +106,11 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        
       </div>
+      <Footer/>
+      </div>
+      
     </>
   );
 };
