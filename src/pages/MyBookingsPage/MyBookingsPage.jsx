@@ -1,14 +1,15 @@
 import React from 'react'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 
 const MyBookingsPage = () => {
   return (
-    <div className='flex items-center justify-center w-[80%] h-[80%]'>
-      <div className='bg-green-700 w-full h-full  flex items-center'></div>
+    <div>
+      <Navbar/>
+      <h1>Mybookings</h1>
+      <Footer/>
     </div>
   )
-    
-    
-  
 }
 
 export default MyBookingsPage
