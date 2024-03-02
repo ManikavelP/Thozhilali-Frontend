@@ -1,10 +1,13 @@
-import Worker1Img from "../assets/images/nahid photo.png";
+import Worker1Img from "../assets/images/worker1.png";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-export default function Card(){
+export default function Card( { onLearnMore }){
     const cardStyle = {
         background:'#132D3A'
         // background: 'linear-gradient(180deg, rgba(36,195,71,1) 0%, rgba(58,73,249,1) 100%)',
       };
+    const handleLearnMoreClick = () => {
+      onLearnMore();
+    };
       
     return(
 
@@ -40,11 +43,12 @@ export default function Card(){
             <div className="text-gray-200 text-xs mt-2">
             UI is the saddle, the stirrups, & the reins. UX is the feeling you get being able to ride the horse.
             </div>
-            <button className="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm ">
+            <button className="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm " onClick={handleLearnMoreClick}>
                 LEARN MORE
             </button>
           </div>
         </div>
       </div>
+      
     )
 }
