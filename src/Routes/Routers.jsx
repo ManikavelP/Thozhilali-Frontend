@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import MyBookingsPage from '../pages/MyBookingsPage/MyBookingsPage';
 import Services from '../pages/ServicesPage/ServicesPage';
 import AboutPage from '../pages/AboutPage/AboutPage';
+import TeamPage from '../pages/TeamPage/Teampage';
 
 
 
@@ -21,6 +22,9 @@ function Routers() {
       <Route path = '/mybookings' element={<MyBookingsPage/>} />
       <Route path = '/about' element={<AboutPage/>} />
       <Route path = '/services' element={<Services/>} />
+      <Route path = '/OurTeam' element={<TeamPage/>} />
+
+
      </Routes>
 
      
