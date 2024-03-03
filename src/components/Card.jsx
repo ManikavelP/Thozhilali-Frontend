@@ -11,7 +11,7 @@ export default function Card( { onLearnMore }){
       
     return(
 
-        <div style={cardStyle} className=" sm:w-[30%] sm:h-[84%] sm:m-3 m-2 rounded-30 flex flex-row items-center">
+        <div style={cardStyle} className=" sm:w-[30%] sm:h-[80%] sm:m-3 m-2 rounded-30 flex flex-row items-center">
         <div className="w-[30%] sm:w-[25%] m-2.5 bg-white rounded-full overflow-hidden flex-shrink-0">
           <img
             src={Worker1Img}

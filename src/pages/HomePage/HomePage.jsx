@@ -97,7 +97,7 @@ const HomePage = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-full sm:w-[95%] overflow-y-scroll no-scrollbar flex flex-wrap  mb-2 border-backGround rounded-lg justify-center mt-3.5">
+              <div className="w-full sm:w-[100%] overflow-y-scroll no-scrollbar flex flex-wrap  mb-2 border-backGround rounded-lg justify-center mt-3.5">
 
 
               <Card onLearnMore={handleLearnMoreClick} />
@@ -113,8 +113,6 @@ const HomePage = () => {
               <Card onLearnMore={handleLearnMoreClick} />
               {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
               
-
-
 
 
                 {/* Additional card items go here */}

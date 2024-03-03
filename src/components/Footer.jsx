@@ -15,7 +15,7 @@ const Footer = () => {
   }
   return (
     <footer className="bg-backGround ">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-3 ">
         <div className="md:flex md:justify-start">
           <div className="mb-2 md:mb-0 w-[30%] h-[30%] ">
             <a href="#Thozilali" className="flex items-center">
@@ -70,18 +70,18 @@ const Footer = () => {
               </ul>
             </div>
             <div className='flex flex-col sm:justify-end justify-start sm:items-end items-start w-full h-auto mt-0 sm:mt-5'>
-              <h2 className='text-white mb-1'>Stay Up to Date</h2>
+              <h2 className='text-gray-400 mb-1'>Stay Up to Date</h2>
               <form onSubmit={handleSubmit}>
                 <input
                   type="email"
-                  className="flex justify-end px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 mb-2"
+                  className="flex justify-end px-3 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 mb-2"
                   placeholder="Enter email here"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
                   type="submit"
-                  className="w-[40%] sm:w-[50%] h-9 sm:h-8 bg-green-500 text-white rounded-md hover:bg-backGround sm:self-center sm:mt-2 font-semibold"
+                  className="w-[40%] sm:w-[50%] h-9 sm:h-8 bg-green-500 text-gray-300 rounded-md hover:bg-backGround sm:self-center sm:mt-2 font-semibold"
                 >
                   Subscribe
                 </button>
@@ -91,9 +91,9 @@ const Footer = () => {
 
           </div>
         </div>
-        <hr className="my-6 border-gray-100 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex items-center  justify-center">
-          <span className="text-sm sm:text-center text-gray-300">© 2024 Thozilali™  |  All Rights Reserved.
+        <hr className="my-6 border-gray-100 sm:mx-auto dark:border-gray-700 lg:my-5" />
+        <div className="sm:flex items-center h-full w-full    justify-center">
+          <span className="text-sm sm:text-center text-gray-400">© 2024 Thozilali™  |  All Rights Reserved.
           </span>
 
         </div>
