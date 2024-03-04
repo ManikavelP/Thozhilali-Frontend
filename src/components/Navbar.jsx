@@ -1,22 +1,30 @@
-
-
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../assets/images/logo.png'
-
-const navigation = [
-  { name: 'Home', href: '/home', current: true },
-  { name: 'MyBookings', href: '/mybookings', current: false },
-  { name: 'Services', href: '/services', current: false },
-  { name: 'About', href: '/about', current: false },
-]
+import { Fragment, useState } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import logo from '../assets/images/logo.png';
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+export default function Navbar(prop) {
+  const [prefetchPage, setPrefetchPage] = useState(null); // State for prefetching
+
+  const navigation = [
+    { name: 'Home', href: '/home', current: prop.home },
+    { name: 'MyBookings', href: '/mybookings', current: prop.booking },
+    { name: 'Services', href: '/services', current: prop.service },
+    { name: 'About', href: '/about', current: prop.about },
+  ];
+
+  const prefetch = (href) => {
+    const prefetchLink = document.createElement('link');
+    prefetchLink.href = href;
+    prefetchLink.rel = 'prefetch';
+    document.head.appendChild(prefetchLink);
+    setPrefetchPage(href);
+  };
+
   return (
     <Disclosure as="nav" className="bg-backGround ">
       {({ open }) => (
@@ -24,7 +32,6 @@ export default function Navbar() {
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 sm:pt-3 py-2">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -49,6 +56,7 @@ export default function Navbar() {
                       <a
                         key={item.name}
                         href={item.href}
+                        onMouseEnter={() => prefetch(item.href)} // Prefetch on mouse enter
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
@@ -104,7 +112,7 @@ export default function Navbar() {
                           </a>
                         )}
                       </Menu.Item>
-                      
+
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -129,6 +137,7 @@ export default function Navbar() {
                   key={item.name}
                   as="a"
                   href={item.href}
+                  onMouseEnter={() => prefetch(item.href)} // Prefetch on mouse enter
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
@@ -143,5 +152,5 @@ export default function Navbar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }

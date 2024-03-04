@@ -5,9 +5,9 @@ import Footer from '../../components/Footer'
 const ServicesPage = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar service = 'true'/>
       <h1>Services</h1>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
