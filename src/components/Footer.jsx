@@ -55,6 +55,9 @@ const Footer = () => {
                 <li className='flex flex-row gap-1 items-center mb-2 '>
                   <FaArrowAltCircleRight className='text-green-500' /> <Link to="/home" className="hover:underline ">Contact Us</Link>
                 </li>
+                <li className='flex flex-row gap-1 items-center mb-2 '>
+                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/OurTeam" className="hover:underline ">OurTeam</Link>
+                </li>
               </ul>
             </div>
             <div className='sm:mt-6'>
