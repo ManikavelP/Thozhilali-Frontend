@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
-import logo from '../../assets/images/logo.png'
 import Footer from "../../components/Footer";
 import WorkerPopUpCard from "../../components/WorkerPopUpCard";
 
