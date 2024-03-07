@@ -38,19 +38,19 @@ const WorkerPopUp = ({ onClose }) => {
             <h2>Male</h2>
           </div>
         </div>
-        <div class="w-full sm:h-[15%] h-[25%]  flex flex-col sm:flex-row items-center sm:p-5 ">
-          <div class="flex  flex-col w-full sm:w-[40%] p-3 sm:h-full  text-sm sm:text-md items-center justify-center">
+        <div className="w-full sm:h-[15%] h-[25%]  flex flex-col sm:flex-row items-center sm:p-5 ">
+          <div className="flex  flex-col w-full sm:w-[40%] p-3 sm:h-full  text-sm sm:text-md items-center justify-center">
             <h2 className="  font-medium">Country & State & District</h2>
             <p>India | Tamil Nadu | Kanchipuram</p>
           </div>
-          <div class="flex flex-col   sm:w-[30%] sm:h-auto text-sm sm:text-md sm:items-center sm:justify-center">
-            <div class="flex justify-center sm:items-center sm:flex-col sm-p-0 p-2">
+          <div className="flex flex-col   sm:w-[30%] sm:h-auto text-sm sm:text-md sm:items-center sm:justify-center">
+            <div className="flex justify-center sm:items-center sm:flex-col sm-p-0 p-2">
               <h3 className="  font-medium">Contact No</h3>
               <p className="ml-1 sm:ml-0">+91 1234567890</p>
             </div>
           </div>
-          <div class="flex flex-col  sm:items-center sm:justify-center   sm:w-[30%] sm:h-auto   text-sm sm:text-md">
-            <div class="flex sm:flex-col justify-center sm:items-center sm:p-3 ">
+          <div className="flex flex-col  sm:items-center sm:justify-center   sm:w-[30%] sm:h-auto   text-sm sm:text-md">
+            <div className="flex sm:flex-col justify-center sm:items-center sm:p-3 ">
               <h3 className="  font-medium">Email </h3>
               <p className=" sm:ml-0 ml-1">  pranavOfficial@gmail.com</p>
             </div>
@@ -91,11 +91,11 @@ const WorkerPopUp = ({ onClose }) => {
             </h3>
           </div>
 
-          <div class="w-[35%] h-full flex items-center justify-center flex-col">
-            <h4 class="font-medium flex items-center justify-center w-full">
+          <div className="w-[35%] h-full flex items-center justify-center flex-col">
+            <h4 className="font-medium flex items-center justify-center w-full">
               English Proficiency
             </h4>
-            <h3 class="text-sm">Advanced</h3>
+            <h3 className="text-sm">Advanced</h3>
           </div>
           <div className="w-[30%] h-full items-center justify-center flex flex-col ">
             <h4 className="font-medium ">Experience</h4>
