@@ -23,8 +23,6 @@ function Routers() {
       <Route path = '/about' element={<AboutPage/>} />
       <Route path = '/services' element={<Services/>} />
       <Route path = '/OurTeam' element={<TeamPage/>} />
-
-
      </Routes>
 
      
