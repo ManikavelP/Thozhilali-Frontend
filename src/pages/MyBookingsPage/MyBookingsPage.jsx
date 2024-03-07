@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import MyBookingsCard from "./MyBookingsCard";
+import Footer from '../../components/Footer'
 
 const MyBookingsPage = () => {
   return (
@@ -51,6 +52,7 @@ const MyBookingsPage = () => {
           </table>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
