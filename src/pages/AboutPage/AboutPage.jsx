@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import AboutImg from "../../assets/images/Group 312.png";
 import Footer from "../../components/Footer";
+import FeatureImg from "../../assets/images/Group 314.png"
 
 const AboutPage = () => {
   return (
@@ -58,8 +59,10 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <div className="w-full h-[90%] bg-red-200 flex  items-center justify-center mb-16">
-        <div className="w-[90%] sm:w-[70%] sm:h-full h-[90%] bg-orange-200 flex items-center justify-center"></div>
+      <div className="w-full h-[90%]  flex  items-center justify-center mb-16">
+        <div className="w-[90%] sm:w-[60%] sm:h-[90%] h-[90%] flex items-center justify-center">
+          <img src={FeatureImg} alt="Features" />
+        </div>
       </div>
 
       <Footer />
