@@ -1,12 +1,12 @@
 import Worker1Img from "../assets/images/worker1.png";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-export default function Card( { onLearnMore }){
+export default function Card(prop){
     const cardStyle = {
         background:'#132D3A'
         // background: 'linear-gradient(180deg, rgba(36,195,71,1) 0%, rgba(58,73,249,1) 100%)',
       };
     const handleLearnMoreClick = () => {
-      onLearnMore();
+      return prop.onLearnMore(prop.num);
     };
       
     return(
@@ -22,9 +22,9 @@ export default function Card( { onLearnMore }){
         <div className="w-[70%] sm:w-[75%] m-3">
           <div>
             <h1 className="text-xl font-bold text-white">
-              Nahid Hasan
+              {prop.name}
             </h1>
-            <p className="text-sm text-gray-300">Vessel Washing</p>
+            <p className="text-sm text-gray-300">{prop.work}</p>
             <div className="flex items-center mt-2">
               <div className="bg-white text-blue-600 rounded-2xl w-10 h-5 flex items-center justify-center text-xs mr-2">
                 4.5
@@ -41,7 +41,7 @@ export default function Card( { onLearnMore }){
               </div>
             </div>
             <div className="text-gray-200 text-xs mt-2">
-            UI is the saddle, the stirrups, & the reins. UX is the feeling you get being able to ride the horse.
+            {prop.desc}
             </div>
             <button className="mt-2 bg-green-500 text-white px-4 py-2 rounded-md text-sm " onClick={handleLearnMoreClick}>
                 LEARN MORE

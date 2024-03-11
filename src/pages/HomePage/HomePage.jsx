@@ -3,12 +3,127 @@ import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import WorkerPopUpCard from "../../components/WorkerPopUpCard";
-
-
 import { useState } from "react";
+
+const WorkerData = [
+  {
+    index: 1,
+    name: "mani",
+    work: "cleaning",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "ranipet",
+    contactno:9090909090,
+    email: "mani420@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+
+  {
+    index: 2,
+    name: "moni",
+    work: "sweeping",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "kanchipuram",
+    contactno:9090909090,
+    email: "mani421@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+
+  {
+    index: 3,
+    name: "meni",
+    work: "cooking",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "kundrathur",
+    contactno:9090909090,
+    email: "mani422@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+
+  {
+    index: 4,
+    name: "mani",
+    work: "sweeping",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "kanchipuram",
+    contactno:9090909090,
+    email: "mani420@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+
+  {
+    index: 5,
+    name: "mani",
+    work: "sweeping",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "kanchipuram",
+    contactno:9090909090,
+    email: "mani420@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+
+  {
+    index: 6,
+    name: "mani",
+    work: "sweeping",
+    desc: "saapittu vittu thoonguvathu",
+    gender: "Male",
+    country: "India",
+    state: "TamilNadu",
+    district: "kanchipuram",
+    contactno:9090909090,
+    email: "mani420@gmail.com",
+    hrate: "20",
+    wrate: "30",
+    mrate: "40",
+    skills: "Web dev",
+    language: "Urdu",
+    exp: "2 years",
+  },
+];
 const HomePage = () => {
   const [location, setLocation] = useState("");
   const [work, setWork] = useState("");
+  const [popup, setpopup] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,20 +134,39 @@ const HomePage = () => {
 
   const [showWorkerPopUp, setShowWorkerPopUp] = useState(false);
 
-  const handleLearnMoreClick = () => {
-    setShowWorkerPopUp(true);
-  };
-
   const handleCloseWorkerPopUp = () => {
     setShowWorkerPopUp(false);
+    setpopup(null);
   };
-  
+
+  const handleLearnMoreClick = (e) => {
+    setShowWorkerPopUp(true);
+    setpopup(
+      <WorkerPopUpCard
+        name={WorkerData[e - 1].name}
+        gender={WorkerData[e - 1].gender}
+        country={WorkerData[e - 1].country}
+        state={WorkerData[e-1].state}
+        district={WorkerData[e-1].district}
+        contactno={WorkerData[e-1].contactno}
+        email={WorkerData[e-1].email}
+        hrate={WorkerData[e-1].hrate}
+        wrate={WorkerData[e-1].wrate}
+        mrate={WorkerData[e-1].mrate}
+        skills={WorkerData[e-1].skills}
+        language={WorkerData[e-1].language}
+        exp={WorkerData[e-1].exp}      
+        onClose={handleCloseWorkerPopUp}
+        num={e-1}
+      />
+    );
+  };
 
 
   return (
     <>
       <div className="bg-backGround">
-        <Navbar home='true' />
+        <Navbar home="true" />
         <div className=" w-full h-screen overflow-auto">
           <div className="justify-center flex items-center w-full sm:h-[80%] h-[95%] ">
             <div className="bg-white h-[100%] w-[90%] rounded-lg flex flex-col items-center justify-center">
@@ -97,32 +231,29 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="w-full sm:w-[100%] overflow-y-scroll flex flex-wrap  mb-2 border-backGround rounded-lg justify-center mt-3.5">
-
-
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              <Card onLearnMore={handleLearnMoreClick} />
-              {showWorkerPopUp && <WorkerPopUpCard onClose={handleCloseWorkerPopUp} />}
-              
-
+                {WorkerData.map((d, index) => {
+                  return (
+                    <>
+                      <Card
+                        num={d.index}
+                        onLearnMore={handleLearnMoreClick}
+                        name={d.name}
+                        work={d.work}
+                        desc={d.desc}
+                        key={index}
+                      />
+                      {popup}
+                    </>
+                  );
+                })}
 
                 {/* Additional card items go here */}
               </div>
             </div>
           </div>
-
         </div>
         <Footer />
       </div>
-
     </>
   );
 };
