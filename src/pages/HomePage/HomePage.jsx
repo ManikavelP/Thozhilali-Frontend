@@ -4,122 +4,17 @@ import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import WorkerPopUpCard from "../../components/WorkerPopUpCard";
 import { useState } from "react";
+import axios from 'axios';
 
-const WorkerData = [
-  {
-    index: 1,
-    name: "mani",
-    work: "cleaning",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "ranipet",
-    contactno:9090909090,
-    email: "mani420@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
+let WorkerData=[];
+try {
+  const response = await axios.get('http://localhost:3001/Customer/Workers');
+  WorkerData=response.data;
+} catch (error) {
+  console.error('Error fetching worker data:', error);
+}
 
-  {
-    index: 2,
-    name: "moni",
-    work: "sweeping",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "kanchipuram",
-    contactno:9090909090,
-    email: "mani421@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
 
-  {
-    index: 3,
-    name: "meni",
-    work: "cooking",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "kundrathur",
-    contactno:9090909090,
-    email: "mani422@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
-
-  {
-    index: 4,
-    name: "mani",
-    work: "sweeping",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "kanchipuram",
-    contactno:9090909090,
-    email: "mani420@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
-
-  {
-    index: 5,
-    name: "mani",
-    work: "sweeping",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "kanchipuram",
-    contactno:9090909090,
-    email: "mani420@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
-
-  {
-    index: 6,
-    name: "mani",
-    work: "sweeping",
-    desc: "saapittu vittu thoonguvathu",
-    gender: "Male",
-    country: "India",
-    state: "TamilNadu",
-    district: "kanchipuram",
-    contactno:9090909090,
-    email: "mani420@gmail.com",
-    hrate: "20",
-    wrate: "30",
-    mrate: "40",
-    skills: "Web dev",
-    language: "Urdu",
-    exp: "2 years",
-  },
-];
 const HomePage = () => {
   const [location, setLocation] = useState("");
   const [work, setWork] = useState("");
@@ -143,21 +38,21 @@ const HomePage = () => {
     setShowWorkerPopUp(true);
     setpopup(
       <WorkerPopUpCard
-        name={WorkerData[e - 1].name}
-        gender={WorkerData[e - 1].gender}
-        country={WorkerData[e - 1].country}
-        state={WorkerData[e-1].state}
-        district={WorkerData[e-1].district}
-        contactno={WorkerData[e-1].contactno}
-        email={WorkerData[e-1].email}
-        hrate={WorkerData[e-1].hrate}
-        wrate={WorkerData[e-1].wrate}
-        mrate={WorkerData[e-1].mrate}
-        skills={WorkerData[e-1].skills}
-        language={WorkerData[e-1].language}
-        exp={WorkerData[e-1].exp}      
+        name={WorkerData[e].firstName+WorkerData[e].lastName}
+        gender={WorkerData[e].gender}
+        country={WorkerData[e].country}
+        state={WorkerData[e].state}
+        district={WorkerData[e].distric}
+        contactno={WorkerData[e].phone}
+        email={WorkerData[e].email}
+        hrate={WorkerData[e].hrate}
+        wrate={WorkerData[e].wrate}
+        mrate={WorkerData[e].mrate}
+        skills={WorkerData[e].skillset[0]}
+        language={WorkerData[e].language}
+        exp={WorkerData[e].exp}      
         onClose={handleCloseWorkerPopUp}
-        num={e-1}
+        num={e}
       />
     );
   };
@@ -235,11 +130,11 @@ const HomePage = () => {
                   return (
                     <>
                       <Card
-                        num={d.index}
+                        num={index}
                         onLearnMore={handleLearnMoreClick}
-                        name={d.name}
+                        name={d.firstName+d.lastName}
                         work={d.work}
-                        desc={d.desc}
+                        desc={d.skillset[0]}
                         key={index}
                       />
                       {popup}

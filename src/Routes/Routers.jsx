@@ -8,9 +8,6 @@ import AboutPage from '../pages/AboutPage/AboutPage';
 import TeamPage from '../pages/TeamPage/Teampage';
 
 
-
-
-
 function Routers() {
   return (
      <>
