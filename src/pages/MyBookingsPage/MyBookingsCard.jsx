@@ -10,11 +10,11 @@ const MyBookingsCard = () => {
         <td className="sm:px-10 py-5 px-20 ">Total Cleaning</td>
         <td className="sm:px-6 py-5 px-10">06/03/2024</td>
         <td className="px-8 py-9  flex justify-center items-center  text-center">
-          <div className="w-28 h-6 flex flex-row bg-orange-100 rounded-lg items-center justify-center gap-2">
-            <span className="w-2.5 h-2.5 bg-orange-400 rounded-full"></span>
-            <p className="text-sm text-orange-400">Pending</p>
+          <div className="w-28 h-6 flex flex-row bg-green-100 rounded-lg items-center justify-center gap-2">
+            <span className="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+            <p className="text-sm text-green-500">Accepted</p>
           </div>
-        </td>
+        </td> 
         <td className=" py-5 px-10 ">
           <button
             type="submit"
@@ -29,3 +29,23 @@ const MyBookingsCard = () => {
 };
 
 export default MyBookingsCard;
+
+//  <td className="px-8 py-9  flex justify-center items-center  text-center">
+//   <div className="w-28 h-6 flex flex-row bg-red-100 rounded-lg items-center justify-center gap-2">
+//     <span className="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+//     <p className="text-sm text-red-500">Denied</p>
+//   </div>
+// </td>
+
+/* <td className="px-8 py-9  flex justify-center items-center  text-center">
+          <div className="w-28 h-6 flex flex-row bg-green-100 rounded-lg items-center justify-center gap-2">
+            <span className="w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+            <p className="text-sm text-green-400">Accepted</p>
+          </div>
+        </td>  */
+        // <td className="px-8 py-9  flex justify-center items-center  text-center">
+        //   <div className="w-28 h-6 flex flex-row bg-orange-100 rounded-lg items-center justify-center gap-2">
+        //     <span className="w-2.5 h-2.5 bg-orange-400 rounded-full"></span>
+        //     <p className="text-sm text-orange-400">Pending</p>
+        //   </div>
+        // </td> 

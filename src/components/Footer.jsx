@@ -50,11 +50,15 @@ const Footer = () => {
                   <FaArrowAltCircleRight className='text-green-500' /> <Link to="/home" className="hover:underline ">Home</Link>
                 </li>
                 <li className='flex flex-row gap-1 items-center mb-2 '>
-                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/about" className="hover:underline ">About Us</Link>
+                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/about" className="hover:underline ">About</Link>
                 </li>
                 <li className='flex flex-row gap-1 items-center mb-2 '>
-                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/home" className="hover:underline ">Contact Us</Link>
+                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/mybookings" className="hover:underline ">MyBookings</Link>
                 </li>
+                <li className='flex flex-row gap-1 items-center mb-2 '>
+                  <FaArrowAltCircleRight className='text-green-500' /> <Link to="/services" className="hover:underline ">Services</Link>
+                </li>
+
                 <li className='flex flex-row gap-1 items-center mb-2 '>
                   <FaArrowAltCircleRight className='text-green-500' /> <Link to="/OurTeam" className="hover:underline ">OurTeam</Link>
                 </li>

@@ -14,7 +14,7 @@ const TeamPage = () => {
         <div className="w-full mb-10 sm:mb-0 flex flex-col h-[25%]  items-center justify-center">
           <div className="w-[80%] h-[90%]  items-center flex flex-col">
             <div className="w-full h-10  flex items-center justify-center">
-              <h3 className="text-blue-500 text-sm font-semibold">Our Team</h3>
+              <h3 className="text-green-600 text-sm font-semibold">Our Team</h3>
             </div>
             <div className="w-full h-12 flex bg-backGround items-center justify-center">
               <h1 className="text-2xl   text-white font-bold ">
@@ -70,9 +70,9 @@ const TeamPage = () => {
               </div>
               <div className="w-full gap-1 h-24 items-center justify-center flex flex-col  ">
                 <h1 className="text-white sm:text-black font-semibold text-md ">
-                  C S Shriram Jayanth
+                  Manickavel P
                 </h1>
-                <p className="text-gray-300 text-sm">Backend Developer</p>
+                <p className="text-gray-300 text-sm">Frontend Developer</p>
                 <div className="flex sm:justify-center  flex-row mt-2   ">
                   <a
                     href="https://www.facebook.com/"
@@ -105,9 +105,9 @@ const TeamPage = () => {
               </div>
               <div className="w-full gap-1 h-24 items-center justify-center flex flex-col  ">
                 <h1 className="text-white sm:text-black font-semibold text-md ">
-                  C S Shriram Jayanth
+                  Raja Kumar
                 </h1>
-                <p className="text-gray-300 text-sm">Backend Developer</p>
+                <p className="text-gray-300 text-sm">UI/UX Designer  </p>
                 <div className="flex sm:justify-center  flex-row mt-2   ">
                   <a
                     href="https://www.facebook.com/"
