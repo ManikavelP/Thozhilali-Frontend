@@ -6,6 +6,7 @@ import MyBookingsPage from '../pages/MyBookingsPage/MyBookingsPage';
 import Services from '../pages/ServicesPage/ServicesPage';
 import AboutPage from '../pages/AboutPage/AboutPage';
 import TeamPage from '../pages/TeamPage/Teampage';
+import SignInPage from '../pages/LoginPage/SignInPage';
 
 
 function Routers() {
@@ -13,7 +14,9 @@ function Routers() {
      <>
      <Routes>
       <Route path='/' element = {<Navigate  to="/SignUp"/>}/>
+      <Route path='/login' element = {<SignInPage/>}/>
 
+       
       <Route path = '/home' element={<HomePage/>} />
       <Route path = '/home:id' element={<HomePage/>} />
       <Route path = '/mybookings' element={<MyBookingsPage/>} />

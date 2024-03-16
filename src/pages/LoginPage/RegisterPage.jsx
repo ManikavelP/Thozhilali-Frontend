@@ -1,6 +1,6 @@
 import logo from "../../assets/images/logo.png";
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -23,13 +23,10 @@ const RegisterPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const validationErrors = {};
-
     if (!formData.firstName) {
       validationErrors.firstName = "First Name is required.";
     }
-
     if (!formData.lastName) {
       validationErrors.lastName = "Last Name is required.";
     }
@@ -62,7 +59,6 @@ const RegisterPage = () => {
       validationErrors.password =
         "Password must be at least 8 characters long.";
     }
-    
 
     if (formData.password !== formData.confirmPassword) {
       validationErrors.confirmPassword = "Passwords do not match.";
@@ -71,9 +67,9 @@ const RegisterPage = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      let abc=formData;
-      abc.phoneNo=parseInt(abc.phoneNo)
-      abc.age=parseInt(abc.age)
+      let abc = formData;
+      abc.phoneNo = parseInt(abc.phoneNo);
+      abc.age = parseInt(abc.age);
 
       setFormData(abc);
       console.log("Form data:", formData);
@@ -85,19 +81,26 @@ const RegisterPage = () => {
     <div className=" items-center justify-center bg-backGround flex w-full h-screen">
       <div className=" flex sm:w-[70%] sm:h-[98%] rounded-lg   w-full h-[95%]  flex-row items-center justify-center    ">
         <div className="w-[70%] sm:h-full h-[98%] hidden lg:flex   rounded-l-lg  bg-green-800  flex-col items-center justify-center">
-          <div className=" w-[90%] h-[13%] flex items-center  justify-center ">
+          <div className=" w-[90%] h-[80%] flex items-center  justify-center ">
             <img src={logo} alt="" />
           </div>
-          <div className="w-[70%] text-white text-center  mt-10   h-[10%] flex items-center justify-center">
-            <p>
-              By signing up, you will receive <br /> more details on Thozilali
-            </p>
+
+          <div className="w-full h-[20%] justify-center  items-center flex">
+            <div className=" w-full h-[50%] text-white flex flex-row gap-3 items-center justify-center ">
+              <p>Have an Account</p>{" "}
+              <Link
+                to="/login"
+                className="text-backGround font-semibold hover:text-green-500  ease-linear text-lg"
+              >
+                Login
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="sm:w-full w-[95%] sm-m-0  sm:p-0 h-full flex items-center justify-center sm:rounded-r-lg sm:hidden:rounded-lg bg-green-500  ">
+        <div className="sm:w-full w-[95%] sm-m-0 p-10 sm:p-0 h-full flex items-center justify-center sm:rounded-r-lg sm:hidden:rounded-lg  bg-green-600  ">
           <div className="sm:w-[95%] sm:h-[90%] w-full h-full  flex flex-col">
             <div className="w-full h-[20%] flex items-center justify-center text-center">
-              <h1 className="text-3xl font-semibold ">Customer Sign Up</h1>
+              <h1 className="sm:text-3xl text-md font-semibold ">Customer Registration</h1>
             </div>{" "}
             {/* title*/}
             <div className="w-full flex-col   h-full flex items-center justify-center">
@@ -107,7 +110,7 @@ const RegisterPage = () => {
               >
                 <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start justify-center ">
                   <div className="flex flex-col w-[50%]   sm:w-auto">
-                    <label htmlFor="firstName" className="text-sm font-medium">
+                    <label htmlFor="firstName" className="sm:text-sm  font-medium">
                       First Name
                     </label>
                     <input
@@ -121,7 +124,9 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.firstName && (
-                      <p className="text-red-500  text-[0.55rem]">{errors.firstName}</p>
+                      <p className="text-red-500  text-[0.55rem]">
+                        {errors.firstName}
+                      </p>
                     )}
                   </div>
 
@@ -140,7 +145,9 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.lastName && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.lastName}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.lastName}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -163,10 +170,11 @@ const RegisterPage = () => {
                       <option value="female">Female</option>
                     </select>
                     {errors.gender && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.gender}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.gender}
+                      </p>
                     )}
                   </div>
-
 
                   <div className="flex flex-col h-auto w-[13%] ">
                     <label htmlFor="age" className="text-sm font-medium">
@@ -183,32 +191,33 @@ const RegisterPage = () => {
                       className={`rounded-md border py-2 px-1 border-gray-300 p-2 `}
                     />
                     {errors.age && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.age}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.age}
+                      </p>
                     )}
                   </div>
                   <div className="flex   flex-col h-auto sm:w-[30%] w-[60%] ">
-                    
                     <label htmlFor="age" className="text-sm font-medium">
                       Phone No
                     </label>
                     <div className="relative w-full  flex ">
-                    <span className="absolute inset-y-0 start-0 flex items-center sm:ps-3.5 px-1    pointer-events-none">+91</span>
-                    <input
-                      type="number"
-                      id="phoneNo"
-                      name="phoneNo"
-                      value={formData.phoneNo}
-                      onChange={handleChange}
-                      className={`rounded-md border border-gray-300 ps-9 w-48 sm:w-auto sm:ps-12 p-2 `}
-                    />
-                    
+                      <span className="absolute inset-y-0 start-0 flex items-center sm:ps-3.5 px-1    pointer-events-none">
+                        +91
+                      </span>
+                      <input
+                        type="number"
+                        id="phoneNo"
+                        name="phoneNo"
+                        value={formData.phoneNo}
+                        onChange={handleChange}
+                        className={`rounded-md border border-gray-300 ps-9 w-48 sm:w-auto sm:ps-12 p-2 `}
+                      />
                     </div>
                     {errors.phoneNo && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.phoneNo}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.phoneNo}
+                      </p>
                     )}
-                   
-
-                    
                   </div>
                 </div>
                 <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start  ">
@@ -227,11 +236,13 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.email}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
-                  </div>
-                  <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start  ">
+                </div>
+                <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start  ">
                   <div className="flex flex-col w-[74%]    sm:w-[65%]">
                     <label htmlFor="occupation" className="text-sm font-medium">
                       Occupation
@@ -247,11 +258,13 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.occupation && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.occupation}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.occupation}
+                      </p>
                     )}
                   </div>
-                  </div>
-                  <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start justify-center ">
+                </div>
+                <div className="flex  gap-2 w-full p-2 sm:h-[16%] h-[20%]  items-center sm:justify-start justify-center ">
                   <div className="flex flex-col w-[50%]   sm:w-auto">
                     <label htmlFor="Password" className="text-sm font-medium">
                       Password
@@ -267,12 +280,17 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.password && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.password}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.password}
+                      </p>
                     )}
                   </div>
 
                   <div className="flex flex-col  w-[50%]  sm:w-auto">
-                    <label htmlFor="confirmPassword" className=" text-sm font-medium">
+                    <label
+                      htmlFor="confirmPassword"
+                      className=" text-sm font-medium"
+                    >
                       Confirm Password
                     </label>
                     <input
@@ -286,7 +304,9 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.confirmPassword && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.confirmPassword}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.confirmPassword}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -306,25 +326,32 @@ const RegisterPage = () => {
                       }`}
                     />
                     {errors.address && (
-                      <p className="text-red-500 text-[0.55rem]">{errors.address}</p>
+                      <p className="text-red-500 text-[0.55rem]">
+                        {errors.address}
+                      </p>
                     )}
                   </div>
-                  </div>
-                
-
-
-
-
+                </div>
 
                 {/* ... similar input fields for gender, age, address, email, password, confirmPassword, and occupation */}
                 <div className="flex items-center  justify-center w-full">
-                
                   <button
                     type="submit"
                     className="  sm:px-5  sm:py-2 px-4 py-2.5 sm:m-2 m-0 bg-backGround text-white rounded-md hover:bg-backGround  font-semibold"
                   >
                     SUBMIT
                   </button>
+                </div>
+                <div className="w-full sm:hidden h-[20%] justify-center  items-center flex">
+                  <div className=" w-full h-[50%] text-white flex flex-row gap-3 items-center justify-center ">
+                    <p>Have an Account</p>{" "}
+                    <Link
+                      to="/login"
+                      className="text-backGround font-semibold hover:text-green-500  ease-linear text-lg"
+                    >
+                      Login
+                    </Link>
+                  </div>
                 </div>
               </form>
             </div>
