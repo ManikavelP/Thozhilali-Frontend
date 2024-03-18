@@ -61,7 +61,7 @@ const SignInPage = () => {
             </div>
           </div>
         </div>
-        <div className="sm:w-full w-[95%] sm-m-0  sm:p-0 h-full flex items-center sm:justify-center justify-center sm:rounded-r-lg rounded-lg bg-green-600  ">
+        <div className="sm:w-full w-[95%] sm-m-0  sm:p-0 h-full flex items-center sm:justify-center justify-center sm:rounded-r-lg  bg-green-600  ">
           <div className="sm:w-[95%] sm:h-[90%] w-full h-full items-center  justify-center flex flex-col">
             <div className="w-full h-[20%] flex items-center justify-center  text-center">
               <h1 className="sm:text-3xl text-md font-semibold ">Customer Login</h1>
