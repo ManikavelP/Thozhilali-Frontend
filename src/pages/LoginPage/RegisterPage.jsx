@@ -1,6 +1,23 @@
 import logo from "../../assets/images/logo.png";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const addData = async (data) => {
+  try {
+    const response = await axios.post("http://localhost:3001/CAuth/register", data, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -72,7 +89,8 @@ const RegisterPage = () => {
       abc.age = parseInt(abc.age);
 
       setFormData(abc);
-      console.log("Form data:", formData);
+      addData(abc);
+
       // You can also handle form submission here (e.g., send data to a server)
     }
   };
@@ -166,8 +184,8 @@ const RegisterPage = () => {
                       <option value="" className="text-gray-500 ">
                         Gender
                       </option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                     {errors.gender && (
                       <p className="text-red-500 text-[0.55rem]">

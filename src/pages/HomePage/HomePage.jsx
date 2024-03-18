@@ -42,7 +42,7 @@ const HomePage = () => {
         gender={WorkerData[e].gender}
         country={WorkerData[e].country}
         state={WorkerData[e].state}
-        district={WorkerData[e].distric}
+        district={WorkerData[e].district}
         contactno={WorkerData[e].phone}
         email={WorkerData[e].email}
         hrate={WorkerData[e].hrate}
@@ -134,7 +134,7 @@ const HomePage = () => {
                         onLearnMore={handleLearnMoreClick}
                         name={d.firstName+d.lastName}
                         work={d.work}
-                        desc={d.skillset[0]}
+                        desc={d.desc}
                         key={index}
                       />
                       {popup}
