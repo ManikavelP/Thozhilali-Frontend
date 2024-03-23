@@ -1,16 +1,25 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Member1 from "../../assets/images/image 48.png";
 import Shriram from "../../assets/images/IMG20240112124224.jpg";
-
+import { useNavigate,useLocation } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaGithub } from "react-icons/fa";
+import { useEffect } from "react";
 
 const TeamPage = () => {
+  const navigate=useNavigate();
+  const loc=useLocation();
+  const receivedId = loc.state?.id;
+  const receivedname=loc.state?.name;
+  useEffect(() => {
+    if (!loc.state) {
+      navigate("/login");
+    }
+  }, [navigate, loc.state]);
   return (
     <>
       <div className="w-full  h-screen bg-backGround">
-        <Navbar />
+        <Navbar Uid={receivedId} name={receivedname}/>
         <div className="w-full mb-10 sm:mb-0 flex flex-col h-[25%]  items-center justify-center">
           <div className="w-[80%] h-[90%]  items-center flex flex-col">
             <div className="w-full h-10  flex items-center justify-center">

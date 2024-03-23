@@ -1,28 +1,35 @@
-import { Fragment, useState } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import logo from '../assets/images/logo.png';
+import { Fragment} from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom"; // Import useHistory hook from React Router
+
+import logo from "../assets/images/logo.png";
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar(prop) {
-  const [prefetchPage, setPrefetchPage] = useState(null); // State for prefetching
+  const navigate = useNavigate(); // Initialize history from React Router
 
   const navigation = [
-    { name: 'Home', href: '/home', current: prop.home },
-    { name: 'MyBookings', href: '/mybookings', current: prop.booking },
-    { name: 'Services', href: '/services', current: prop.service },
-    { name: 'About', href: '/about', current: prop.about },
+    { name: "Home", href: "/home", current: prop.home },
+    { name: "MyBookings", href: "/mybookings", current: prop.booking },
+    { name: "Services", href: "/services", current: prop.service },
+    { name: "About", href: "/about", current: prop.about },
   ];
 
   const prefetch = (href) => {
-    const prefetchLink = document.createElement('link');
+    const prefetchLink = document.createElement("link");
     prefetchLink.href = href;
-    prefetchLink.rel = 'prefetch';
+    prefetchLink.rel = "prefetch";
     document.head.appendChild(prefetchLink);
-    setPrefetchPage(href);
+  };
+
+  const handleNavigation = (href) => {
+    navigate(href, {
+      state: { id: prop.Uid,name:prop.name },
+    });
   };
 
   return (
@@ -44,27 +51,27 @@ export default function Navbar(prop) {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-10 w-auto"
-                    src={logo}
-                    alt="Your Company"
-                  />
+                  <img className="h-10 w-auto" src={logo} alt="Your Company" />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <div
                         key={item.name}
-                        href={item.href}
-                        onMouseEnter={() => prefetch(item.href)} // Prefetch on mouse enter
+                        onClick={() => {
+                          handleNavigation(item.href);
+                          prefetch(item.href);
+                        }} // Prefetch on mouse enter
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -104,20 +111,25 @@ export default function Navbar(prop) {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          <div
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
-                            Your Profile
-                          </a>
+                            {prop.name}
+                          </div>
                         )}
                       </Menu.Item>
 
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            href="/"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Sign out
                           </a>
@@ -137,12 +149,17 @@ export default function Navbar(prop) {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  onMouseEnter={() => prefetch(item.href)} // Prefetch on mouse enter
+                  onMouseEnter={() => {
+                    handleNavigation(item.href);
+                    prefetch(item.href);
+                  }} // Prefetch on mouse enter
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>

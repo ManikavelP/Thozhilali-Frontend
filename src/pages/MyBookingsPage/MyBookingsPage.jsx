@@ -1,12 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import MyBookingsCard from "./MyBookingsCard";
-import Footer from '../../components/Footer'
+import Footer from "../../components/Footer";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const MyBookingsPage = () => {
+  const navigate = useNavigate();
+  const loc = useLocation();
+  const receivedId = loc.state?.id;
+  const receivedname = loc.state?.name;
+  useEffect(() => {
+    if (!loc.state) {
+      navigate("/login");
+    }
+  }, [navigate, loc.state]);
+
+  const [mybookings, setmybookings] = useState();
+
+useEffect(()=>{
+  const getData = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/Customer/bookings",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setmybookings(response.data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  }
+  
+  const requestData = { name: receivedname, id: receivedId };
+  getData(requestData);
+
+})
+
+
   return (
     <div className="w-full h-screen bg-backGround">
-      <Navbar booking="true" />
+      <Navbar booking="true" Uid={receivedId} name={receivedname} />
       <div className="w-full h-[8%]  items-center flex justify-center  ">
         <h1 className=" flex text-2xl font-semibold text-white">
           Your Bookings
@@ -36,23 +75,23 @@ const MyBookingsPage = () => {
               </tr>
             </thead>
             <tbody className="">
-              <MyBookingsCard/>
-              <MyBookingsCard/>
-              <MyBookingsCard/>
-              <MyBookingsCard/>
-              <MyBookingsCard/>
-              <MyBookingsCard/>
-              
-             
-              
-             
-              
-              
+            {mybookings && mybookings.map((item,index)=>{
+                return(<MyBookingsCard
+                  name={item.name}
+                  work={item.work}
+                  date={item.date}
+                  status={item.status}
+                  phone={item.phone}
+                  key={index}
+                  uid={receivedId}
+                  wid={item.id}
+                />)
+              })}
             </tbody>
           </table>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

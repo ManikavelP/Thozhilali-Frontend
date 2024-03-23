@@ -17,7 +17,6 @@ function Routers() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/home:id" element={<HomePage />} />
         <Route path="/mybookings" element={<MyBookingsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<Services />} />

@@ -3,11 +3,22 @@ import Navbar from "../../components/Navbar";
 import AboutImg from "../../assets/images/Group 312.png";
 import Footer from "../../components/Footer";
 import FeatureImg from "../../assets/images/Group 314.png"
+import { useNavigate,useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const AboutPage = () => {
+  const navigate=useNavigate();
+  const loc=useLocation();
+  const receivedId = loc.state?.id;
+  const receivedname=loc.state?.name;
+  useEffect(() => {
+    if (!loc.state) {
+      navigate("/login");
+    }
+  }, [navigate, loc.state]);
   return (
     <div className="w-full h-screen ">
-      <Navbar about="true" />
+      <Navbar about="true" Uid={receivedId} name={receivedname}/>
       <div className="w-full sm:h-[70%] h-[85%] bg-backGround flex  flex-col">
         <div className="w-full h-20 flex items-center ">
           <h1 className="font-semibold  text-3xl sm:text-5xl ml-[50%] sm:ml-[60%] text-white">

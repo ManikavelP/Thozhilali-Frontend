@@ -1,7 +1,10 @@
 import logo from "../../assets/images/logo.png";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
+import axios from "axios";
+
 const SignInPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,26 +21,36 @@ const SignInPage = () => {
 
     const validationErrors = {};
 
-    if (!formData.confirmPassword) {
-      validationErrors.confirmPassword = " confirm password is required.";
-    }
     if (!formData.email) {
       validationErrors.email = "email is required.";
     }
 
-    if (!formData.password || formData.password.length < 8) {
-      validationErrors.password =
-        "Password must be at least 8 characters long.";
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      validationErrors.confirmPassword = "Passwords do not match.";
-    }
-
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length === 0) {
-      console.log("Form data:", formData);
+      validateIdPass(formData);
+    }
+  };
+
+  const validateIdPass = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/CAuth/login",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 200) {
+        alert("Login successful");
+        navigate("/home", { state: { id: response.data.user._id, token: response.data.token, name:response.data.user.firstName+" "+response.data.user.lastName } });
+      }
+      else{
+        alert(response.data.msg);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -64,7 +77,9 @@ const SignInPage = () => {
         <div className="sm:w-full w-[95%] sm-m-0  sm:p-0 h-full flex items-center sm:justify-center justify-center sm:rounded-r-lg  bg-green-600  ">
           <div className="sm:w-[95%] sm:h-[90%] w-full h-full items-center  justify-center flex flex-col">
             <div className="w-full h-[20%] flex items-center justify-center  text-center">
-              <h1 className="sm:text-3xl text-md font-semibold ">Customer Login</h1>
+              <h1 className="sm:text-3xl text-md font-semibold ">
+                Customer Login
+              </h1>
             </div>{" "}
             {/* title*/}
             <div className="w-full flex-col   h-[50%]  flex items-center justify-center">

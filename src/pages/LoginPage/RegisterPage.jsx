@@ -10,8 +10,9 @@ const addData = async (data) => {
         "Content-Type": "application/json"
       }
     });
-
-    console.log(response.data);
+    if(response.status===203){
+      alert("Successfully Registered")
+    }
   } catch (error) {
     console.error(error);
   }

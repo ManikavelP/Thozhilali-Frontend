@@ -2,10 +2,30 @@ import React from "react";
 import logo from "../assets/images/logo.png";
 import { MdOutlineCancel } from "react-icons/md";
 import workerImg from "../assets/images/worker1.png";
+import axios from "axios";
 
 const WorkerPopUp = (prop) => {
   const handleCloseClick = () => {
    return prop.onClose();
+  };
+
+  const bookWorker = async () => {
+    let data={Wid:prop.W_id,Cid:prop.C_id}
+    try {
+      const response = await axios.put(
+        "http://localhost:3001/Customer/book",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert(response.data.message);
+
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   
@@ -104,6 +124,7 @@ const WorkerPopUp = (prop) => {
           <button
             type="submit"
             num={prop.num}
+            onClick={bookWorker}
             className="w-[50%] sm:w-auto bg-backGround text-white rounded-xl px-3.5 py-2 self-center sm:self-auto  font-semibold hover:bg-green-700"
           >
             SUBMIT

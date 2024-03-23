@@ -1,13 +1,26 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import {useNavigate,useLocation} from "react-router-dom";
 import ServiceCard from "./ServiceCard";
+import { useEffect } from "react";
+
 
 const ServicePage = () => {
+  const navigate=useNavigate();
+  const loc=useLocation();
+  const receivedId = loc.state?.id;
+  const receivedname=loc.state?.name;
+  useEffect(() => {
+    if (!loc.state) {
+      navigate("/login");
+    }
+  }, [navigate, loc.state]);
+
   return (
     <>
-    <Navbar/>
-    <section className="pb-12 lg:pb-[90px] lg:pt-[60px]">
+    <Navbar Uid={receivedId} name={receivedname} service={true}/>
+    <section className="pb-12 lg:pb-[90px] lg:pt-[60px] bg-backGround">
       <div className="container mx-auto">
         <div className=" flex flex-wrap ">
           <div className="w-full px-4 mt-10 sm-mt-0">
@@ -15,10 +28,10 @@ const ServicePage = () => {
               <span className="mb-2 block text-green-600 text-lg font-semibold text-primary">
                 Our Services
               </span>
-              <h2 className="mb-3 text-3xl font-bold leading-[1.2] text-dark dark:text-black sm:text-4xl md:text-[40px]">
+              <h2 className="mb-3 text-3xl font-bold leading-[1.2] text-dark dark:text-white sm:text-4xl md:text-[40px]">
                 What We Offer
               </h2>
-              <p className="text-base text-body-color dark:text-dark-6">
+              <p className="text-base text-body-color dark:text-white">
               We aim to elevate the dignity of domestic work, foster economic independence, promote gender equality, and enhance work-life balance.
               </p>
             </div>

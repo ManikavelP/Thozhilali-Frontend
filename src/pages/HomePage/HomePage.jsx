@@ -1,44 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import WorkerPopUpCard from "../../components/WorkerPopUpCard";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from 'axios';
-
-let WorkerData=[];
-try {
-  const response = await axios.get('http://localhost:3001/Customer/Workers');
-  WorkerData=response.data;
-} catch (error) {
-  console.error('Error fetching worker data:', error);
-}
-
+import axios from "axios";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const loc = useLocation();
+  const receivedId = loc.state?.id;
+  const receivedname = loc.state?.name;
+  useEffect(() => {
+    if (!loc.state) {
+      navigate("/login");
+    }
+  }, [navigate, loc.state]);
+
   const [location, setLocation] = useState("");
   const [work, setWork] = useState("");
   const [popup, setpopup] = useState(null);
+  const [WorkerData, setWorkerData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3001/Customer/Workers"
+        );
+        let Data = response.data;
+        setWorkerData(Data);
+      } catch (error) {
+        console.error("Error fetching worker data:", error);
+      }
+    };
+    getData();
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!location || !work) {
+      alert("Please select location and work");
+      return;
+    }
     // Performing Backend Operations
     console.log("Location:", location);
     console.log("Work:", work);
   };
 
-  const [showWorkerPopUp, setShowWorkerPopUp] = useState(false);
-
   const handleCloseWorkerPopUp = () => {
-    setShowWorkerPopUp(false);
     setpopup(null);
   };
 
   const handleLearnMoreClick = (e) => {
-    setShowWorkerPopUp(true);
     setpopup(
       <WorkerPopUpCard
-        name={WorkerData[e].firstName+WorkerData[e].lastName}
+        name={WorkerData[e].firstName + WorkerData[e].lastName}
         gender={WorkerData[e].gender}
         country={WorkerData[e].country}
         state={WorkerData[e].state}
@@ -50,18 +68,19 @@ const HomePage = () => {
         mrate={WorkerData[e].mrate}
         skills={WorkerData[e].skillset[0]}
         language={WorkerData[e].language}
-        exp={WorkerData[e].exp}      
+        exp={WorkerData[e].exp}
         onClose={handleCloseWorkerPopUp}
-        num={e}
+        num={e + 1}
+        W_id={WorkerData[e]._id}
+        C_id={loc.state.id}
       />
     );
   };
 
-
   return (
     <>
       <div className="bg-backGround">
-        <Navbar home="true" />
+        <Navbar home="true" Uid={receivedId} name={receivedname} />
         <div className=" w-full h-screen overflow-auto">
           <div className="justify-center flex items-center w-full sm:h-[80%] h-[95%] ">
             <div className="bg-white h-[100%] w-[90%] rounded-lg flex flex-col items-center justify-center">
@@ -117,9 +136,9 @@ const HomePage = () => {
                   </div>
 
                   <button
-                    type="submit"
+                    type="button" // Change type to "button"
                     className="w-[70%] sm:w-auto sm:px-5 sm:py-3 py-2.5 bg-green-500 text-white rounded-md hover:bg-backGround self-center sm:self-auto sm:mt-8 font-semibold"
-                    onSubmit={handleSubmit}
+                    onClick={handleSubmit} // Attach handleSubmit to onClick
                   >
                     Get Started
                   </button>
@@ -128,26 +147,26 @@ const HomePage = () => {
               <div className="w-full sm:w-[100%] overflow-y-scroll flex flex-wrap  mb-2 border-backGround rounded-lg justify-center mt-3.5">
                 {WorkerData.map((d, index) => {
                   return (
-                    <>
-                      <Card
-                        num={index}
-                        onLearnMore={handleLearnMoreClick}
-                        name={d.firstName+d.lastName}
-                        work={d.work}
-                        desc={d.desc}
-                        key={index}
-                      />
-                      {popup}
-                    </>
+                    <Card
+                      num={index}
+                      onLearnMore={handleLearnMoreClick}
+                      name={d.firstName + d.lastName}
+                      work={d.work}
+                      desc={d.desc}
+                      key={index}
+                    />
                   );
                 })}
-
-                {/* Additional card items go here */}
               </div>
+              {popup && (
+                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+                  {popup}
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer Uid={receivedId} name={receivedname} />
       </div>
     </>
   );
