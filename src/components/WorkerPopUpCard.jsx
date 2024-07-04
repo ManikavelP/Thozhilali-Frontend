@@ -13,7 +13,7 @@ const WorkerPopUp = (prop) => {
     let data={Wid:prop.W_id,Cid:prop.C_id}
     try {
       const response = await axios.put(
-        "http://localhost:3001/Customer/book",
+      `${backendlink}/Customer/book`,
         data,
         {
           headers: {

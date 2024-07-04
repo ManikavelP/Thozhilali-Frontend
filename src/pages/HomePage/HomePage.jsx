@@ -23,30 +23,17 @@ const HomePage = () => {
   const [popup, setpopup] = useState(null);
   const [WorkerData, setWorkerData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3001/Customer/Workers"
-        );
-        let Data = response.data;
-        setWorkerData(Data);
-      } catch (error) {
-        console.error("Error fetching worker data:", error);
-      }
-    };
-    getData();
-  });
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!location || !work) {
-      alert("Please select location and work");
-      return;
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/Customer/Workers",{loc:location,WoRk:work}
+      );
+      let Data = response.data;
+      setWorkerData(Data);
+    } catch (error) {
+      console.error("Error fetching worker data:", error);
     }
-    // Performing Backend Operations
-    console.log("Location:", location);
-    console.log("Work:", work);
   };
 
   const handleCloseWorkerPopUp = () => {
