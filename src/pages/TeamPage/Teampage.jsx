@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Shriram from "../../assets/images/IMG20240112124224.jpg";
+import Raja from "../../assets/images/59090221.png";
+import Manick from "../../assets/images/Manick.jpg"
 import { useNavigate,useLocation } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaGithub } from "react-icons/fa";
 import { useEffect } from "react";
@@ -57,14 +59,14 @@ const TeamPage = () => {
                   </a>
 
                   <a
-                    href="https://twitter.com/ManickavelP"
+                    href="https://twitter.com/"
                     className="text-gray-500 hover:text-blue-500  ms-5"
                   >
                     <FaTwitter />
                     <span className="sr-only">Twitter page</span>
                   </a>
                   <a
-                    href="https://github.com/ManikavelP/Thozhilali-Frontend"
+                    href="https://github.com/ShriramJayanth/Thozhilali-Frontend"
                     className="text-gray-500 hover:text-black  ms-5"
                   >
                     <FaGithub />
@@ -75,7 +77,7 @@ const TeamPage = () => {
             </div>
             <div className="sm:w-[25%] w-[70%] sm:gap-7 sm:h-[80%] flex flex-col items-center justify-between ">
               <div className="w-full h-[70%]  items-center justify-center flex  rounded-lg">
-                <img src={Shriram} alt="" className="rounded-lg" />
+                <img src={Manick} alt="" className="rounded-lg" />
               </div>
               <div className="w-full gap-1 h-24 items-center justify-center flex flex-col  ">
                 <h1 className="text-white sm:text-black font-semibold text-md ">
@@ -110,7 +112,7 @@ const TeamPage = () => {
             </div>
             <div className="sm:w-[25%] w-[70%] sm:gap-7  sm:h-[80%] flex flex-col items-center justify-between ">
               <div className="w-full h-[70%]  items-center justify-center flex  rounded-lg">
-                <img src={Shriram} alt="" className="rounded-lg" />
+                <img src={Raja} alt="" className="rounded-lg" />
               </div>
               <div className="w-full gap-1 h-24 items-center justify-center flex flex-col  ">
                 <h1 className="text-white sm:text-black font-semibold text-md ">
