@@ -9,7 +9,7 @@ const MyBookingsCard = (props) => {
   const deleteBooking = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/Customer/deletebooking",
+        "https://thozhilali-backend.onrender.com/Customer/deletebooking",
         senddata,
         {
           headers: {

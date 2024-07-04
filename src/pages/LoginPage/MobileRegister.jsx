@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const MobileRegister = () => {
   const addData = async (data) => {
     try {
-      const response = await axios.post("http://localhost:3001/CAuth/register", data, {
+      const response = await axios.post("https://thozhilali-backend.onrender.com/CAuth/register", data, {
         headers: {
           "Content-Type": "application/json"
         }

@@ -23,7 +23,7 @@ useEffect(()=>{
   const getData = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/Customer/bookings",
+        "https://thozhilali-backend.onrender.com/Customer/bookings",
         data,
         {
           headers: {

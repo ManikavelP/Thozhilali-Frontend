@@ -27,7 +27,7 @@ const HomePage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/Customer/Workers",{loc:location,WoRk:work}
+        "https://thozhilali-backend.onrender.com/Customer/Workers",{loc:location,WoRk:work}
       );
       let Data = response.data;
       setWorkerData(Data);
