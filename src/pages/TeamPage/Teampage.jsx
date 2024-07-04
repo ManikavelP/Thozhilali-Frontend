@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Shriram from "../../assets/images/IMG20240112124224.jpg";
-import Raja from "../../assets/images/59090221.png";
+import Raja from "../../assets/images/raja.jpg";
 import Manick from "../../assets/images/Manick.jpg"
 import { useNavigate,useLocation } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaGithub } from "react-icons/fa";
